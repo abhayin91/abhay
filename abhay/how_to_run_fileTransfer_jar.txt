@@ -1,0 +1,36 @@
+How to Run JAR
+
+To run as a Server : 
+        java -jar fileTransfer.jar server  --port=5785 –directory=c:/abhay
+    Arguments:
+        server : mandatory | identifies purpose of utility.
+        --port : mandatory | port on which server will listen.
+        --directory: Optional - if not provided file will be downloaded to directory from where this jar is run| root directory where server will save transmitted file.
+To Stop Server : enter “stop” on console (keyboard input)
+
+To run as a Client : 
+    java -jar fileTransfer.jar client --hostname=127.0.0.1 --port=5785 --directory=C:\abhay --clientID=abhay_3 –files=<list of files comma , seperated>
+    Arguments:
+    client : mandatory | identifies purpose of utility.
+    --hostname : mandatory |  FQDN of server (should be connectable over network)
+    --port : mandatory | port of server on which client will connect (should be connectable over network)
+    .
+    --directory: Optional | mandatory if --file is not given | root directory where server will save transmitted file.
+    --files : Optional | mandatory if --directory is not given |comma separated file path
+    
+To Stop Client : automatically exits after file transfer.
+
+
+Assumptions :
+    Command line utility as it is going to be scheduled.
+    Server will continuously until told to stop.
+    Server will save all received files under directory named as per ClientID provided by client.
+    pooling interval for server is set to 30 seconds.
+    buffer size in 2 KB this can be tuned as per network bandwidth and letancy.
+    
+Features:
+    Can handle multiple clients
+    Can tranter all file from one directory and list of all files provided.
+    File extension agnostic can transfer all kind of files.
+    Tests are under package “test/com.abhay.file.descriptor”
+
